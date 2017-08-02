@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="Ajax.js"></script>
+<style>
+#button{
+	height: 23px;
+    width: 73px;
+    line-height: 24px;
+    text-align: center;
+	background-color: #F3F3F3;
+    border: 1px solid #ACACAC;
+   
+}
+</style>
+<script>
+var fnCheck = false, lnameCheck = false, ageCheck = false;
+function validateForm() {
+
+	var fn = document.getElementById("fname");
+	if(fn.value.length<=0){
+		alert("Please fill the firstname");
+		return;
+	} else {
+		fnCheck = true;
+	}
+	
+	var lname = document.getElementById("lname");
+	if(lname.value.length <= 3){
+		alert("LastName should not be less than 3 character"); 
+		return;
+	} else {
+		lnameCheck = true;
+	}
+	
+	var age = document.getElementById("AgeDropdownId");
+		if(age.value<= 18){
+		alert("Age should be greater than 18");
+		return;
+	}	else {
+		ageCheck = true;
+	}
+}
+</script>
+</head>
+<body>
+
+	
+First name:<input type="text" id="fname" name="fname" ><br>
+
+Last name:<input type="text" id="lname" name="lastname" ><br>
+
+Age: <select id="AgeDropdownId" name="AgeDropdown"  > 
+    <option value="0">--Select Age--</option>
+</select>
+
+<br>
+
+Date of Birth:<input type="date" id="dob" name="bday"><br>
+
+Gender:
+<input type="radio" name="gender" id="gen" value="male" checked> Male
+<input type="radio" name="gender" id="gen" value="female"> Female<br>
+
+<div  type="submit" id="button">Submit</div>
+<div id="ajaxResp"></div>
+<script type="text/javascript">
+
+
+createOptionsTag();
+
+function createOptionsTag(){
+	var ddl = document.getElementById('AgeDropdownId');
+	for (var i = 1; i <= 60; i++) {
+	    var theOption = new Option;
+	    theOption.text = i;
+	    theOption.value = i;
+	    ddl.options[i] = theOption;
+	}
+}
+
+</script>
+
+</body>
+</html>
